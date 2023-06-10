@@ -11,3 +11,20 @@
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;
 }
+
+.header {
+  margin: 0 auto;
+  padding: 45px 0 40px 0;
+  box-sizing: border-box;
+  max-width: 880px;
+}
+
+.header__logo {
+  display: flex;
+  box-sizing: border-box;
+  max-width: 142px;
+  padding-bottom: 41px;
+  object-fit: contain;
+}
+
+
