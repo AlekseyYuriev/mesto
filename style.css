@@ -17,7 +17,7 @@
   padding: 45px 0 0 0;
   box-sizing: border-box;
   max-width: 880px;
-  border-bottom: 1px solid #545454;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
 
 .header__logo {
@@ -93,6 +93,8 @@
   height: 24px;
   background-color: transparent;
   cursor: pointer;
+  background-image: url('./image/edit-button.png');
+  background-size: contain;
 }
 
 .profile__add-button {
@@ -104,6 +106,8 @@
   height: 50px;
   background-color: transparent;
   cursor: pointer;
+  background-image: url('./image/add-button.png');
+  background-size: contain;
 }
 
 .link {
@@ -155,6 +159,7 @@
 
 .element__title {
   margin: 0;
+  max-width: 184px;
   font-style: normal;
   font-weight: 900;
   font-size: 24px;
@@ -165,13 +170,16 @@
 }
 
 .element__button {
-  margin: 0 0 0 40px;
-  padding: 0;
-  box-sizing: border-box;
-  border: none;
   width: 22px;
   height: 19px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  box-sizing: border-box;
+  border: none;
   cursor: pointer;
+  background-color: transparent;
+  background-image: url('./image/group.svg');
 }
 
 .element__button:hover {
@@ -192,3 +200,106 @@
   line-height: 22px;
   color: #545454;
 }
+
+.popup {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 195px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup_opend {
+  display: flex;
+}
+
+.popup__container {
+  max-width: 430px;
+  width: 100%;
+  background: #FFFFFF;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  color: #000000;
+  box-sizing: border-box;
+  position: relative;
+  padding:34px 0 37px 0;
+}
+
+.popup__title {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0 0 0 36px;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.popup__name {
+  box-sizing: border-box;
+  padding: 0;
+  width: 358px;
+  height: 27px;
+  margin: 54px 0 0 36px;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+}
+
+.popup__description {
+  box-sizing: border-box;
+  padding: 0;
+  width: 358px;
+  height: 27px;
+  margin: 30px 0 48px 36px;
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: #000000;
+}
+
+.popup__save-button {
+  box-sizing: border-box;
+  background: #000000;
+  border-radius: 2px;
+  width: 358px;
+  height: 50px;
+  margin-left: 36px;
+  padding: 14px 0 18px;
+  color: #FFFFFF;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+}
+
+.popup__close-button {
+  position: absolute;
+  padding: 0;
+  display: block;
+  width: 32px;
+  height: 32px;
+  right: -40px;
+  top: -40px;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  background-image: url('./image/popup-close-button.svg');
+  background-size: contain;
+}
+

@@ -13,62 +13,73 @@
   <header class="header">
     <img src="./image/logo.png" alt="Логотим проекта" class="header__logo">
   </header>
-  <section class="profile">
-    <div class="profile__avatar"></div>
-    <div class="profile__info">
-      <h1 class="profile__name">Жак-Ив Кусто</h1>
-      <button class="profile__edit-button link"><img src="./image/edit-button.png" alt="Кнопка редактирования профиля"></button>
-      <p class="profile__description">Исследователь океана</p>
-    </div>
-    <button class="profile__add-button link"><img src="./image/add-button.png" alt="Кнопка добавления фотографии"></button>
-  </section>
-  <section class="elements">
-    <div class="element">
-      <img src="./image/karachevsk.png" alt="Пейзаж Карачаево-Черкесской Республики" class="element__image">
-      <div class="element__group">
-        <h2 class="element__title">Карачаево-Черкесская Республика</h2>
-        <button class="element__button"><img src="./image/group.svg" alt="Сердечко"></button>
+  <main>
+    <section class="profile">
+      <div class="profile__avatar"></div>
+      <div class="profile__info">
+        <h1 class="profile__name">Жак-Ив Кусто</h1>
+        <button class="profile__edit-button link"></button>
+        <p class="profile__description">Исследователь океана</p>
       </div>
-    </div>
-    <div class="element">
-      <img src="./image/mount-elbrus.png" alt="Гора Эльбрус" class="element__image">
-      <div class="element__group">
-        <h2 class="element__title">Гора Эльбрус</h2>
-        <button class="element__button"><img src="./image/group.svg" alt="Сердечко"></button>
+      <button class="profile__add-button link"></button>
+    </section>
+    <section class="elements">
+      <div class="element">
+        <img src="./image/karachevsk.png" alt="Пейзаж Карачаево-Черкесской Республики" class="element__image">
+        <div class="element__group">
+          <h2 class="element__title">Карачаево-Черкесская Республика</h2>
+          <button class="element__button"></button>
+        </div>
       </div>
-    </div>
-    <div class="element">
-      <img src="./image/dombai.png" alt="Домбай" class="element__image">
-      <div class="element__group">
-        <h2 class="element__title">Домбай</h2>
-        <button class="element__button"><img src="./image/group.svg" alt="Сердечко"></button>
+      <div class="element">
+        <img src="./image/mount-elbrus.png" alt="Гора Эльбрус" class="element__image">
+        <div class="element__group">
+          <h2 class="element__title">Гора Эльбрус</h2>
+          <button class="element__button"></button>
+        </div>
       </div>
-    </div>
-    <div class="element">
-      <img src="./image/baikal.jpg" alt="Пейзаж зимнего Байкала" class="element__image">
-      <div class="element__group">
-        <h2 class="element__title">Зимний Байкал</h2>
-        <button class="element__button"><img src="./image/group.svg" alt="Сердечко"></button>
+      <div class="element">
+        <img src="./image/dombai.png" alt="Домбай" class="element__image">
+        <div class="element__group">
+          <h2 class="element__title">Домбай</h2>
+          <button class="element__button"></button>
+        </div>
       </div>
-    </div>
-    <div class="element">
-      <img src="./image/kareliya.jpg" alt="Пейзаж Карелии" class="element__image">
-      <div class="element__group">
-        <h2 class="element__title">Карелия</h2>
-        <button class="element__button"><img src="./image/group.svg" alt="Сердечко"></button>
+      <div class="element">
+        <img src="./image/baikal.jpg" alt="Пейзаж зимнего Байкала" class="element__image">
+        <div class="element__group">
+          <h2 class="element__title">Зимний Байкал</h2>
+          <button class="element__button"></button>
+        </div>
       </div>
-    </div>
-    <div class="element">
-      <img src="./image/kavkaz.jpg" alt="Горный пейзаж Кавказа" class="element__image">
-      <div class="element__group">
-        <h2 class="element__title">Горы на Кавказе</h2>
-        <button class="element__button"><img src="./image/group.svg" alt="Сердечко"></button>
+      <div class="element">
+        <img src="./image/kareliya.jpg" alt="Пейзаж Карелии" class="element__image">
+        <div class="element__group">
+          <h2 class="element__title">Карелия</h2>
+          <button class="element__button"></button>
+        </div>
       </div>
-    </div>
-  </section>
+      <div class="element">
+        <img src="./image/kavkaz.jpg" alt="Горный пейзаж Кавказа" class="element__image">
+        <div class="element__group">
+          <h2 class="element__title">Горы на Кавказе</h2>
+          <button class="element__button"></button>
+        </div>
+      </div>
+    </section>
+  </main>
   <footer class="footer">
     <p class="footer__copyright">© 2020 Mesto Russia</p>
   </footer>
+  <aside class="popup">
+    <div class="popup__container">
+      <button class="popup__close-button"></button>
+      <h3 class="popup__title">Редактировать профиль</h3>
+      <input type="text" class="popup__name">
+      <input type="text" class="popup__description">
+      <button class="popup__save-button">Сохранить</button>
+    </div>
+  </aside>
   <script src="./index.js"></script>
 </body>
 </html>
