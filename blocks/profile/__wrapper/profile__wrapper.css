@@ -1,0 +1,7 @@
+.profile__wrapper {
+  max-width: 336px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: last baseline;
+}

@@ -1,0 +1,7 @@
+.header__logo {
+  display: flex;
+  box-sizing: border-box;
+  max-width: 142px;
+  padding-bottom: 41px;
+  object-fit: contain;
+}
