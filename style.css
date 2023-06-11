@@ -49,14 +49,23 @@
 .profile__info {
   margin: 0;
   max-width: 336px;
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile__wrapper {
+  max-width: 336px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: last baseline;
 }
 
 .profile__name {
   margin: 0;
-  padding: 0;
+  padding: 0 0 16px 0;
   max-width: 294px;
   width: 100%;
   font-style: normal;
@@ -85,15 +94,17 @@
 }
 
 .profile__edit-button {
-  margin: 0 0 0 18px;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
+  display: flex;
   border: none;
   width: 24px;
   height: 24px;
   background-color: transparent;
   cursor: pointer;
   background-image: url('./image/edit-button.png');
+  background-repeat: no-repeat;
   background-size: contain;
 }
 
@@ -253,6 +264,9 @@
   font-size: 14px;
   line-height: 17px;
   color: #000000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .popup__description {
@@ -268,6 +282,9 @@
   font-size: 14px;
   line-height: 17px;
   color: #000000;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .popup__save-button {
