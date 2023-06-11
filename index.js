@@ -23,7 +23,7 @@ popupCloseButtonElement.addEventListener('click', handleClick);
 
 // выбран элемент формы
 
-let formElement = document.querySelector('.form');
+let formElement = document.querySelector('.popup__form');
 
 // выбраны элементы ввода имени и описания профиля
 
@@ -54,5 +54,3 @@ function handleFormSubmit(evt) {
 
 formElement.addEventListener('submit', handleFormSubmit);
 formElement.addEventListener('submit', handleClick);
-
-

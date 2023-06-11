@@ -7,5 +7,12 @@
   color: #000000;
   box-sizing: border-box;
   position: relative;
-  padding:34px 0 37px 0;
+  padding: 34px 0 37px 0;
+}
+
+@media screen and (max-width: 650px) {
+  .popup__container {
+    max-width: 282px;
+    padding: 25px 0 25px 0;
+  }
 }
