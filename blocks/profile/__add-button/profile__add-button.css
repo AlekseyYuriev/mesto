@@ -9,4 +9,13 @@
   cursor: pointer;
   background-image: url('../../../images/add-button.png');
   background-size: contain;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 650px) {
+  .profile__add-button {
+    width: 282px;
+    margin: 36px 0 0 0;
+    background-image: url('../../../images/add-button-big.png');
+  }
 }
