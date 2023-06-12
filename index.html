@@ -10,7 +10,7 @@
 </head>
 <body class="page">
   <header class="header">
-    <img src="./images/logo.png" alt="Логотип проекта" class="header__logo">
+    <img src="./images/logo.svg" alt="Логотип проекта" class="header__logo">
   </header>
   <main>
     <section class="profile">
@@ -18,53 +18,53 @@
       <div class="profile__info">
         <div class="profile__wrapper">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button link"></button>
+          <button type="button" class="profile__edit-button link"></button>
         </div>
         <p class="profile__description">Исследователь океана</p>
       </div>
-      <button class="profile__add-button link"></button>
+      <button type="button" class="profile__add-button link"></button>
     </section>
     <section class="elements">
       <div class="element">
         <img src="./images/karachevsk.png" alt="Пейзаж Карачаево-Черкессии" class="element__image">
         <div class="element__group">
           <h2 class="element__title">Карачаево-Черкессия</h2>
-          <button class="element__button"></button>
+          <button type="button" class="element__button"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/mount-elbrus.png" alt="Гора Эльбрус" class="element__image">
         <div class="element__group">
           <h2 class="element__title">Гора Эльбрус</h2>
-          <button class="element__button"></button>
+          <button type="button" class="element__button"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/dombai.png" alt="Домбай" class="element__image">
         <div class="element__group">
           <h2 class="element__title">Домбай</h2>
-          <button class="element__button"></button>
+          <button type="button" class="element__button"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/baikal.jpg" alt="Пейзаж зимнего Байкала" class="element__image">
         <div class="element__group">
           <h2 class="element__title">Зимний Байкал</h2>
-          <button class="element__button"></button>
+          <button type="button" class="element__button"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/kareliya.jpg" alt="Пейзаж Карелии" class="element__image">
         <div class="element__group">
           <h2 class="element__title">Карелия</h2>
-          <button class="element__button"></button>
+          <button type="button" class="element__button"></button>
         </div>
       </div>
       <div class="element">
         <img src="./images/kavkaz.jpg" alt="Горный пейзаж Кавказа" class="element__image">
         <div class="element__group">
           <h2 class="element__title">Горы на Кавказе</h2>
-          <button class="element__button"></button>
+          <button type="button" class="element__button"></button>
         </div>
       </div>
     </section>
@@ -74,15 +74,15 @@
   </footer>
   <aside class="popup">
     <div class="popup__container">
-      <button class="popup__close-button"></button>
+      <button type="button" class="popup__close-button"></button>
       <h3 class="popup__title">Редактировать профиль</h3>
-      <form action="#" class="popup__form">
-        <input type="text" class="popup__name" value="Жак-Ив Кусто">
-        <input type="text" class="popup__description" value="Исследователь океана">
+      <form name="form" action="#" class="popup__form">
+        <input name="user" type="text" class="popup__input popup__input_name">
+        <input name="about" type="text" class="popup__input popup__input_description">
         <button class="popup__save-button" type="submit">Сохранить</button>
       </form>
     </div>
   </aside>
-  <script src="./index.js"></script>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>

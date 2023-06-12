@@ -27,8 +27,8 @@ let formElement = document.querySelector('.popup__form');
 
 // выбраны элементы ввода имени и описания профиля
 
-let nameInput = document.querySelector('.popup__name');
-let jobInput = document.querySelector('.popup__description');
+let nameInput = document.querySelector('.popup__input_name');
+let jobInput = document.querySelector('.popup__input_description');
 
 // Обработчик отправки формы, хотя данные на сервер пока что не отправляются
 
