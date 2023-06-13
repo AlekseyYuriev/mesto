@@ -1,56 +1,58 @@
 
-// реализация функции открытия/закрытия popup путём добавления класса
-
-// выбор элементов, которые взаимодействуют с popup
+// выбор элементов, которые взаимодействуют с popup и формой
 
 const editButtonElement = document.querySelector('.profile__edit-button');
 const popupCloseButtonElement = document.querySelector('.popup__close-button');
 const popupElement = document.querySelector('.popup');
 
-// функция, добавляющая/удаляющая класс, который делает popup видимым
+const formElement = document.querySelector('.popup__form');
+let nameInput = document.querySelector('.popup__input_name');
+let descriptionInput = document.querySelector('.popup__input_description');
 
-function handleClick() {
-  popupElement.classList.toggle('popup_opend');
+// выбор элементов имени и описания профиля на основной странице
+
+let profileName = document.querySelector('.profile__name');
+let profileDescription = document.querySelector('.profile__description');
+
+// функция открытия popup с переносом значений имени и описания профиля в поля формы
+
+function openEditProfilePopup() {
+
+  nameInput.value = profileName.textContent;
+  descriptionInput.value = profileDescription.textContent;
+
+  popupElement.classList.add('popup_opend');
 }
 
-// добавлен слушатель события по "клику" на кнопки "редактировать профиль" и "закрыть popup"
+editButtonElement.addEventListener('click', openEditProfilePopup);
 
-editButtonElement.addEventListener('click', handleClick);
-popupCloseButtonElement.addEventListener('click', handleClick);
+// функция закрытия popup
 
+function closeEditProfilePopup() {
 
-// реализация изменения данных "имя пользователя" и "информация о пользователе"
+  popupElement.classList.remove('popup_opend');
+}
 
-// выбран элемент формы
+popupCloseButtonElement.addEventListener('click', closeEditProfilePopup);
 
-let formElement = document.querySelector('.popup__form');
-
-// выбраны элементы ввода имени и описания профиля
-
-let nameInput = document.querySelector('.popup__input_name');
-let jobInput = document.querySelector('.popup__input_description');
-
-// Обработчик отправки формы, хотя данные на сервер пока что не отправляются
+// функция, присваивающая новые значения имени и описания профиля через popup
 
 function handleFormSubmit(evt) {
-  evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы
+  // отмена стандартной отправки формы
+  evt.preventDefault();
 
-  // получить значение полей nameInput и jobInput из свойства value
-  let a = nameInput.value;
-  let b = jobInput.value;
+  // Присваиваем значения полей nameInput и descriptionInput из свойства value
+  // нужным элементам (profileName и profileDescription) с помощью textContent
 
-  // выбрать элементы, куда должны быть вставлены значения полей
+  profileName.textContent = nameInput.value;
+  profileDescription.textContent = descriptionInput.value;
 
-  let profileName = document.querySelector('.profile__name');
-  let profileDescription = document.querySelector('.profile__description');
+  // Добавляем функцию закрытия popup
 
-  // вставить новые значения с помощью textContent
+  closeEditProfilePopup();
 
-  profileName.textContent = a;
-  profileDescription.textContent = b;
 }
 
-//Прикрепить обработчик к форме: он будет следить за событием "submit" - "отправка"
-
+// Прикрепляем обработчик к форме:
+// он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', handleFormSubmit);
-formElement.addEventListener('submit', handleClick);
