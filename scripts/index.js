@@ -6,8 +6,8 @@ const popupCloseButtonElement = document.querySelector('.popup__close-button');
 const popupElement = document.querySelector('.popup');
 
 const formElement = document.querySelector('.popup__form');
-let nameInput = document.querySelector('.popup__input_name');
-let descriptionInput = document.querySelector('.popup__input_description');
+let nameInput = document.querySelector('.popup__input_type_name');
+let descriptionInput = document.querySelector('.popup__input_type_description');
 
 // выбор элементов имени и описания профиля на основной странице
 
