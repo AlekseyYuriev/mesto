@@ -1,30 +1,141 @@
 
+// создаём исходный массив с данными для карточек
+
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
+// выбираем элемент template для последующего наполнения данными из массива и секцию для добавления карточек
+
+const templateElement = document.querySelector('.card-template');
+const sectionElement = document.querySelector('.elements');
+
+// функция для создания карточек
+
+const createCard = ({name, link}) => {
+
+  const clone = templateElement.content.cloneNode(true);
+  const cardElement = clone.querySelector('.element');
+  cardElement.querySelector('.element__image').src = link;
+  cardElement.querySelector('.element__title').textContent = name;
+  cardElement.querySelector('.element__image').alt = name;
+
+  return cardElement;
+}
+
+// добавляем карточки с помощью данных из массива
+
+initialCards.forEach((item) => {
+  const newCard = createCard(item);
+  sectionElement.append(newCard);
+});
+
 // выбор элементов, которые взаимодействуют с popup и формой
 
 const editButtonElement = document.querySelector('.profile__edit-button');
-const popupCloseButtonElement = document.querySelector('.popup__close-button');
-const popupElement = document.querySelector('.popup');
+const popupProfileCloseButton = document.querySelector('.popup__close-button_type_profile');
+const popupEditElement = document.querySelector('.popup_type_edit');
 
 const formElement = document.querySelector('.popup__form');
 let nameInput = document.querySelector('.popup__input_type_name');
 let descriptionInput = document.querySelector('.popup__input_type_description');
+
+const addButtonElement = document.querySelector('.profile__add-button');
+const popupAddCardElement = document.querySelector('.popup_type_add');
+const popupCardCloseButton = document.querySelector('.popup__close-button_type_card');
 
 // выбор элементов имени и описания профиля на основной странице
 
 let profileName = document.querySelector('.profile__name');
 let profileDescription = document.querySelector('.profile__description');
 
-// функция открытия popup с переносом значений имени и описания профиля в поля формы
+// выбор элементов полей ввода в попапе для добавления карточек
 
-function openEditProfilePopup() {
+let cardName = document.querySelector('.popup__input_type_card-name');
+let cardLink = document.querySelector('.popup__input_type_link');
 
-  nameInput.value = profileName.textContent;
-  descriptionInput.value = profileDescription.textContent;
+// функция открытия popup с условиями для разных попапов
 
-  popupElement.classList.add('popup_opend');
+function openPopup(e) {
+  e.classList.add('popup_opend');
+  // для редактирования профиля переносим имя и опиание в поля ввода
+  if (e === popupEditElement) {
+    nameInput.value = profileName.textContent;
+    descriptionInput.value = profileDescription.textContent;
+  } else {
+    // для добавления карточек оставляем поля ввода пустыми
+    cardName.value = '';
+    cardLink.value = '';
+  }
 }
 
-editButtonElement.addEventListener('click', openEditProfilePopup);
+// вешаем обработчик события по клику на кнопки открытия попапов с функцией колбэком
+
+editButtonElement.addEventListener('click', () => openPopup(popupEditElement));
+addButtonElement.addEventListener('click', () => openPopup(popupAddCardElement));
+
+// функция закрытия popup
+
+function closePopup(e) {
+  e.classList.remove('popup_opend');
+}
+
+// вешаем обработчик события по клику на кнопки закрытия попапов с функцией колбэком
+
+popupProfileCloseButton.addEventListener('click', () => closePopup(popupEditElement));
+popupCardCloseButton.addEventListener('click', () => closePopup(popupAddCardElement));
+
+
+/*
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  const link = null;
+  const name = null;
+  const newCard = createCard({name, link});
+  sectionElement.append(newCard);
+}
+
+
+const addButtonElement = document.querySelector('.profile__add-button');
+const popupAddElement = document.querySelector('.popup_type_add');
+
+addButtonElement.addEventListener('click', () => {
+  popupAddElement.classList.add('popup_opend');
+})
+
+function closeEditProfilePopup(e) {
+  const eventTarget = e.target;
+  popupElement.classList.remove('popup_opend');
+}
+
+popupCloseButtonElement.addEventListener('click', () => closeEditProfilePopup(e));
+*/
+
+/*
 
 // функция закрытия popup
 
@@ -56,3 +167,4 @@ function handleFormSubmit(evt) {
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', handleFormSubmit);
+*/
