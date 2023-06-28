@@ -47,3 +47,9 @@
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__save-button/popup__save-button.css);
+
+/*bigcard*/
+@import url(../blocks/bigcard/bigcard.css);
+@import url(../blocks/bigcard/__container/bigcard__container.css);
+@import url(../blocks/bigcard/__image/bigcard__image.css);
+@import url(../blocks/bigcard/__title/bigcard__title.css);
