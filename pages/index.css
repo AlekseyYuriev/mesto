@@ -41,6 +41,7 @@
 /*bigcard*/
 @import url(../blocks/bigcard/bigcard.css);
 @import url(../blocks/bigcard/__container/bigcard__container.css);
+@import url(../blocks/bigcard/__close-button/bigcard__close-button.css);
 @import url(../blocks/bigcard/__image/bigcard__image.css);
 @import url(../blocks/bigcard/__title/bigcard__title.css);
 
