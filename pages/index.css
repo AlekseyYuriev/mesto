@@ -38,6 +38,12 @@
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
+/*bigcard*/
+@import url(../blocks/bigcard/bigcard.css);
+@import url(../blocks/bigcard/__container/bigcard__container.css);
+@import url(../blocks/bigcard/__image/bigcard__image.css);
+@import url(../blocks/bigcard/__title/bigcard__title.css);
+
 /*popup*/
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/_opend/popup_opend.css);
@@ -47,9 +53,3 @@
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__save-button/popup__save-button.css);
-
-/*bigcard*/
-@import url(../blocks/bigcard/bigcard.css);
-@import url(../blocks/bigcard/__container/bigcard__container.css);
-@import url(../blocks/bigcard/__image/bigcard__image.css);
-@import url(../blocks/bigcard/__title/bigcard__title.css);

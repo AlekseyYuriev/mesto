@@ -33,6 +33,12 @@ const initialCards = [
 const templateElement = document.querySelector('.card-template');
 const sectionElement = document.querySelector('.elements');
 
+// выбираем элементы картинки для реализации всплывающего окна с фото
+
+const bigCardImage = document.querySelector('.bigcard__image');
+const bigCardTitle = document.querySelector('.bigcard__title');
+const bigCardPopup = document.querySelector('.bigcard');
+
 // функция для создания карточек
 
 const createCard = ({name, link}) => {
@@ -63,6 +69,15 @@ const createCard = ({name, link}) => {
     likeButton.classList.toggle('element__like-button_active');
   });
 
+// добавляем слушатель события по картинке с функцией просмотра увеличенной фото
+
+  cardElement.querySelector('.element__image').addEventListener('click', () => {
+    bigCardImage.src = link;
+    bigCardImage.alt = name;
+    bigCardTitle.textContent = name;
+    bigCardPopup.classList.add('popup_opend');
+  })
+
   return cardElement;
 }
 
@@ -78,8 +93,8 @@ initialCards.forEach((item) => {
 const editButtonElement = document.querySelector('.profile__edit-button');
 const popupProfileCloseButton = document.querySelector('.popup__close-button_type_profile');
 const popupEditElement = document.querySelector('.popup_type_edit');
-
 const formEditElement = document.querySelector('.popup__form');
+
 let nameInput = document.querySelector('.popup__input_type_name');
 let descriptionInput = document.querySelector('.popup__input_type_description');
 
@@ -88,17 +103,21 @@ const popupAddCardElement = document.querySelector('.popup_type_add');
 const popupCardCloseButton = document.querySelector('.popup__close-button_type_card');
 const formAddElement = document.querySelector('.popup__form_type_add');
 
-// выбор элементов имени и описания профиля на основной странице
-
-let profileName = document.querySelector('.profile__name');
-let profileDescription = document.querySelector('.profile__description');
-
 // выбор элементов полей ввода в попапе для добавления карточек
 
 let cardName = document.querySelector('.popup__input_type_card-name');
 let cardLink = document.querySelector('.popup__input_type_link');
 
-// универсальная функция открытия всех popup
+// выбираем кнопку закрытия попапа с увеличенной фото
+
+const bigCardCloseButton = document.querySelector('.bigcard__close-button');
+
+// выбор элементов имени и описания профиля на основной странице
+
+let profileName = document.querySelector('.profile__name');
+let profileDescription = document.querySelector('.profile__description');
+
+// универсальная функция открытия popup
 
 function openPopup(e) {
   e.classList.add('popup_opend');
@@ -130,6 +149,7 @@ function closePopup(e) {
 
 popupProfileCloseButton.addEventListener('click', () => closePopup(popupEditElement));
 popupCardCloseButton.addEventListener('click', () => closePopup(popupAddCardElement));
+bigCardCloseButton.addEventListener('click', () => closePopup(bigCardPopup));
 
 // функция, присваивающая новые значения имени и описания профиля через popup
 
@@ -168,7 +188,6 @@ const handleAddFormSubmit = (e) => {
 
   // добавляем функцию закрытия попапа после добавления новой карточки
   closePopup(popupAddCardElement);
-
 }
 
 // Прикрепляем обработчик к форме:
