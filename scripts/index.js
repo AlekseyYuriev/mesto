@@ -1,33 +1,4 @@
 
-// создаём исходный массив с данными для карточек
-
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 // выбираем элемент template для последующего наполнения данными из массива и секцию для добавления карточек
 
 const templateElement = document.querySelector('.card-template');
@@ -43,11 +14,11 @@ const bigCardPopup = document.querySelector('.bigcard');
 
 const createCard = ({name, link}) => {
 
-  const clone = templateElement.content.cloneNode(true);
-  const cardElement = clone.querySelector('.element');
-  cardElement.querySelector('.element__image').src = link;
+  const cardElement = templateElement.content.querySelector('.element').cloneNode(true);
+  const cardImage = cardElement.querySelector('.element__image');
+  cardImage.src = link;
   cardElement.querySelector('.element__title').textContent = name;
-  cardElement.querySelector('.element__image').alt = name;
+  cardImage.alt = name;
 
   // выбираем кнопку удаления карточки
 
@@ -71,11 +42,11 @@ const createCard = ({name, link}) => {
 
 // добавляем слушатель события по картинке с функцией просмотра увеличенной фото
 
-  cardElement.querySelector('.element__image').addEventListener('click', () => {
+cardImage.addEventListener('click', () => {
     bigCardImage.src = link;
     bigCardImage.alt = name;
     bigCardTitle.textContent = name;
-    bigCardPopup.classList.add('popup_opend');
+    openPopup(bigCardPopup);
   })
 
   return cardElement;
@@ -93,10 +64,10 @@ initialCards.forEach((item) => {
 const editButtonElement = document.querySelector('.profile__edit-button');
 const popupProfileCloseButton = document.querySelector('.popup__close-button_type_profile');
 const popupEditElement = document.querySelector('.popup_type_edit');
-const formEditElement = document.querySelector('.popup__form');
+const formEditElement = document.querySelector('.popup__form_type_edit');
 
-let nameInput = document.querySelector('.popup__input_type_name');
-let descriptionInput = document.querySelector('.popup__input_type_description');
+const nameInput = document.querySelector('.popup__input_type_name');
+const descriptionInput = document.querySelector('.popup__input_type_description');
 
 const addButtonElement = document.querySelector('.profile__add-button');
 const popupAddCardElement = document.querySelector('.popup_type_add');
@@ -105,8 +76,8 @@ const formAddElement = document.querySelector('.popup__form_type_add');
 
 // выбор элементов полей ввода в попапе для добавления карточек
 
-let cardName = document.querySelector('.popup__input_type_card-name');
-let cardLink = document.querySelector('.popup__input_type_link');
+const cardName = document.querySelector('.popup__input_type_card-name');
+const cardLink = document.querySelector('.popup__input_type_link');
 
 // выбираем кнопку закрытия попапа с увеличенной фото
 
@@ -114,8 +85,8 @@ const bigCardCloseButton = document.querySelector('.bigcard__close-button');
 
 // выбор элементов имени и описания профиля на основной странице
 
-let profileName = document.querySelector('.profile__name');
-let profileDescription = document.querySelector('.profile__description');
+const profileName = document.querySelector('.profile__name');
+const profileDescription = document.querySelector('.profile__description');
 
 // универсальная функция открытия popup
 
@@ -134,8 +105,8 @@ editButtonElement.addEventListener('click', () => {
 
 addButtonElement.addEventListener('click', () => {
   // для попапа добавления карточек оставляем пустыми поля названия карточки и ссылки
-  cardName.value = '';
-  cardLink.value = '';
+
+  formAddElement.reset();
   openPopup(popupAddCardElement);
 });
 
