@@ -72,6 +72,8 @@ const formEditElement = document.querySelector('.popup__form_type_edit')
 
 
 
+
+
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add('popup__input_type_error');
@@ -82,7 +84,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove('popup__input_type_error');
-  errorElement.classList.remove('popup__input-error');
+  //errorElement.classList.remove('popup__input-error');
   errorElement.textContent = '';
 };
 
@@ -146,6 +148,32 @@ function toggleButtonState (inputList, buttonElement) {
 
 
 
+// обработчик события с функцией, которая закрывает попап с боьшой картинкой по клину на оверлэй
+
+bigCardPopup.addEventListener('click', function (evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(bigCardPopup);
+  }
+})
+
+// выберем все попапы на странице
+
+const popupList = document.querySelectorAll('.popup');
+
+// напишем универсальную функцию закрытия для попапов с формой
+
+for (let index = 0; index < popupList.length; index++) {
+  const popupItem = popupList[index];
+  popupItem.addEventListener('click', function(evt) {
+    if (evt.target === evt.currentTarget) {
+      closePopup(popupItem);
+    }
+  });
+}
+
+
+
+
 
 
 
@@ -197,7 +225,7 @@ addButtonElement.addEventListener('click', () => {
 // функция закрытия popup
 
 function closePopup(e) {
-  e.classList.remove('popup_opend');
+    e.classList.remove('popup_opend');
 }
 
 // вешаем обработчик события по клику на кнопки закрытия попапов с функцией колбэком
