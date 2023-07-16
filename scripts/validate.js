@@ -1,53 +1,61 @@
 
-const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add('popup__input_type_error');
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add('popup__input-error');
+const VALIDATION_CONFIG = {
+  formElement: '.popup__form',
+  inputElement: '.popup__input',
+  buttonElement: '.popup__save-button',
+  disabledButtonElement: 'popup__save-button_disabled',
+  inputErrorElement: 'popup__input_type_error',
+  errorElement: 'popup__input-error'
 };
 
-const hideInputError = (formElement, inputElement) => {
+const showInputError = (formElement, inputElement, errorMessage, config) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove('popup__input_type_error');
-  //errorElement.classList.remove('popup__input-error');
+  inputElement.classList.add(config.inputErrorElement);
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add(config.errorElement);
+};
+
+const hideInputError = (formElement, inputElement, config) => {
+  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  inputElement.classList.remove(config.inputErrorElement);
   errorElement.textContent = '';
 };
 
-const isValid = (formElement, inputElement) => {
+const isValid = (formElement, inputElement, config) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(formElement, inputElement, inputElement.validationMessage, config);
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement, config);
   }
 };
 
-const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
-  const buttonElement = formElement.querySelector('.popup__save-button');
+const setEventListeners = (formElement, config) => {
+  const inputList = Array.from(formElement.querySelectorAll(config.inputElement));
+  const buttonElement = formElement.querySelector(config.buttonElement);
 
-  toggleButtonState(inputList, buttonElement);
+  toggleButtonState(inputList, buttonElement, config);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', () => {
-      isValid(formElement, inputElement);
+      isValid(formElement, inputElement, config);
 
-      toggleButtonState(inputList, buttonElement);
+      toggleButtonState(inputList, buttonElement, config);
     });
   });
 };
 
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll('.popup__form'));
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formElement));
 
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', (evt) => {
       evt.preventDefault;
     });
-    setEventListeners(formElement);
+    setEventListeners(formElement, config);
   });
 };
 
-enableValidation();
+enableValidation(VALIDATION_CONFIG);
 
 function hasInvalidInput (inputList) {
   return inputList.some((inputElement) => {
@@ -56,12 +64,21 @@ function hasInvalidInput (inputList) {
   })
 };
 
-function toggleButtonState (inputList, buttonElement) {
+function toggleButtonState (inputList, buttonElement, config) {
   if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add('popup__save-button_disabled');
-    buttonElement.setAttribute('disabled', 'disabled');
+    disableButton (buttonElement, config);
   } else {
-    buttonElement.classList.remove('popup__save-button_disabled');
-    buttonElement.removeAttribute('disabled');
+    enableButton (buttonElement, config);
   }
+}
+
+function disableButton (buttonElement, config) {
+  buttonElement.classList.add(config.disabledButtonElement);
+  buttonElement.disabled = true;
 };
+
+function enableButton (buttonElement, config) {
+  buttonElement.classList.remove(config.disabledButtonElement);
+  buttonElement.disabled = false;
+};
+

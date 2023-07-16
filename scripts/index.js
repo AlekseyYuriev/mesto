@@ -94,19 +94,43 @@ function openPopup(e) {
   e.classList.add('popup_opend');
 }
 
+//выберем все инпуты в попапе редактирования профиля
+inputEditElements = Array.from(popupEditElement.querySelectorAll('.popup__input'));
+
+//функция сбрасывающая ошибки валидации при поторном открытии попапа редактирования профиля
+
+const removeErrorMessage = () => {
+  inputEditElements.forEach((popupInput) => {
+    popupInput.classList.remove('popup__input_type_error');
+    const inputMessageError = document.querySelectorAll('.popup__input-error');
+    inputMessageError.forEach((item) => {
+      item.textContent = '';
+    })
+  })
+}
+
 // вешаем обработчик события по клику на кнопки открытия попапов с функцией колбэком
 
 editButtonElement.addEventListener('click', () => {
+  //убираем текст ошибок при открытии попапа редактирования профиля
+  removeErrorMessage();
   // для попапа редактирования профиля переносим имя и описание в поля ввода
   nameInput.value = profileName.textContent;
   descriptionInput.value = profileDescription.textContent;
   openPopup(popupEditElement);
 });
 
-addButtonElement.addEventListener('click', () => {
-  // для попапа добавления карточек оставляем пустыми поля названия карточки и ссылки
+//выберем кнопку сохранения попапа с добавлением новой карточки
+const saveButton = popupAddCardElement.querySelector('.popup__save-button');
 
+addButtonElement.addEventListener('click', () => {
+
+  //сделаем кнопку сохранения неактивной при открытии попапа
+  disableButton(saveButton, VALIDATION_CONFIG);
+
+  // для попапа добавления карточек оставляем пустыми поля названия карточки и ссылки
   formAddElement.reset();
+
   openPopup(popupAddCardElement);
 });
 
