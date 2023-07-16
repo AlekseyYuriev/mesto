@@ -38,18 +38,15 @@
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
-/*bigcard*/
-@import url(../blocks/bigcard/bigcard.css);
-@import url(../blocks/bigcard/__container/bigcard__container.css);
-@import url(../blocks/bigcard/__close-button/bigcard__close-button.css);
-@import url(../blocks/bigcard/__image/bigcard__image.css);
-@import url(../blocks/bigcard/__title/bigcard__title.css);
-
 /*popup*/
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_dark/popup_dark.css);
 @import url(../blocks/popup/_opend/popup_opend.css);
+@import url(../blocks/popup/__card/popup__card.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
+@import url(../blocks/popup/__image/popup__image.css);
+@import url(../blocks/popup/__card-name/popup__card-name.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__field/popup__field.css);
 @import url(../blocks/popup/__title/popup__title.css);

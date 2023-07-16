@@ -6,9 +6,9 @@ const sectionElement = document.querySelector('.elements');
 
 // выбираем элементы картинки для реализации всплывающего окна с фото
 
-const bigCardImage = document.querySelector('.bigcard__image');
-const bigCardTitle = document.querySelector('.bigcard__title');
-const bigCardPopup = document.querySelector('.bigcard');
+const bigCardImage = document.querySelector('.popup__image');
+const bigCardTitle = document.querySelector('.popup__card-name');
+const bigCardPopup = document.querySelector('.popup_type_bigcard');
 
 // функция для создания карточек
 
@@ -66,118 +66,6 @@ const popupProfileCloseButton = document.querySelector('.popup__close-button_typ
 const popupEditElement = document.querySelector('.popup_type_edit');
 const formEditElement = document.querySelector('.popup__form_type_edit')
 
-
-
-
-
-
-
-
-
-const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add('popup__input_type_error');
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add('popup__input-error');
-};
-
-const hideInputError = (formElement, inputElement) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove('popup__input_type_error');
-  //errorElement.classList.remove('popup__input-error');
-  errorElement.textContent = '';
-};
-
-const isValid = (formElement, inputElement) => {
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
-  } else {
-    hideInputError(formElement, inputElement);
-  }
-};
-
-const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll('.popup__input'));
-  const buttonElement = formElement.querySelector('.popup__save-button');
-
-  toggleButtonState(inputList, buttonElement);
-
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener('input', () => {
-      isValid(formElement, inputElement);
-
-      toggleButtonState(inputList, buttonElement);
-    });
-  });
-};
-
-const enableValidation = () => {
-  const formList = Array.from(document.querySelectorAll('.popup__form'));
-
-  formList.forEach((formElement) => {
-    formElement.addEventListener('submit', (evt) => {
-      evt.preventDefault;
-    });
-    setEventListeners(formElement);
-  });
-};
-
-enableValidation();
-
-function hasInvalidInput (inputList) {
-  return inputList.some((inputElement) => {
-
-    return !inputElement.validity.valid;
-  })
-};
-
-function toggleButtonState (inputList, buttonElement) {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add('popup__save-button_disabled');
-    buttonElement.setAttribute('disabled', 'disabled');
-  } else {
-    buttonElement.classList.remove('popup__save-button_disabled');
-    buttonElement.removeAttribute('disabled');
-  }
-};
-
-
-
-
-
-
-
-
-// обработчик события с функцией, которая закрывает попап с боьшой картинкой по клину на оверлэй
-
-bigCardPopup.addEventListener('click', function (evt) {
-  if (evt.target === evt.currentTarget) {
-    closePopup(bigCardPopup);
-  }
-})
-
-// выберем все попапы на странице
-
-const popupList = document.querySelectorAll('.popup');
-
-// напишем универсальную функцию закрытия для попапов с формой
-
-for (let index = 0; index < popupList.length; index++) {
-  const popupItem = popupList[index];
-  popupItem.addEventListener('click', function(evt) {
-    if (evt.target === evt.currentTarget) {
-      closePopup(popupItem);
-    }
-  });
-}
-
-
-
-
-
-
-
-
 const nameInput = document.querySelector('.popup__input_type_name');
 const descriptionInput = document.querySelector('.popup__input_type_description');
 
@@ -193,7 +81,7 @@ const cardLink = document.querySelector('.popup__input_type_link');
 
 // выбираем кнопку закрытия попапа с увеличенной фото
 
-const bigCardCloseButton = document.querySelector('.bigcard__close-button');
+const bigCardCloseButton = document.querySelector('.popup__close-button_type_bigcard');
 
 // выбор элементов имени и описания профиля на основной странице
 
@@ -276,3 +164,34 @@ const handleAddFormSubmit = (e) => {
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка» для формы создания карточек
 formAddElement.addEventListener('submit', handleAddFormSubmit);
+
+//выберем все попапы на странице и сразу представим их в виде массива
+const popupList = Array.from(document.querySelectorAll('.popup'));
+
+//универсальная функция закрытия всех попапов по клику на оверлэй
+
+const closePopupByOverlay = () => {
+  popupList.forEach((popupItem) => {
+    popupItem.addEventListener('click', function(evt) {
+      if (evt.target === evt.currentTarget) {
+        closePopup(popupItem);
+      }
+    });
+  });
+}
+
+closePopupByOverlay();
+
+//универсальная функция закрытия всех попапов по клавише esc
+
+const closePopupByEsc = () => {
+  popupList.forEach((formElement) => {
+    document.addEventListener('keydown', function(e) {
+      if (e.keyCode === 27) {
+        closePopup(formElement);
+      }
+    })
+  })
+}
+
+closePopupByEsc();
