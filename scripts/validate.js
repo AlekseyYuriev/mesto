@@ -48,9 +48,6 @@ const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formElement));
 
   formList.forEach((formElement) => {
-    formElement.addEventListener('submit', (evt) => {
-      evt.preventDefault;
-    });
     setEventListeners(formElement, config);
   });
 };
@@ -82,3 +79,14 @@ function enableButton (buttonElement, config) {
   buttonElement.disabled = false;
 };
 
+//функция сбрасывающая ошибки валидации при поторном открытии попапа редактирования профиля
+
+const removeErrorMessage = (formElement, config) => {
+  const inputList = Array.from(formElement.querySelectorAll(config.inputElement));
+  inputList.forEach((inputElement) => {
+    inputElement.classList.remove(config.inputErrorElement);
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.remove(config.inputErrorElement);
+    errorElement.textContent = '';
+  })
+}

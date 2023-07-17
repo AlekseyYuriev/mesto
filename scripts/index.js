@@ -62,7 +62,6 @@ initialCards.forEach((item) => {
 // выбор элементов, которые взаимодействуют с popup и формой
 
 const editButtonElement = document.querySelector('.profile__edit-button');
-const popupProfileCloseButton = document.querySelector('.popup__close-button_type_profile');
 const popupEditElement = document.querySelector('.popup_type_edit');
 const formEditElement = document.querySelector('.popup__form_type_edit')
 
@@ -71,17 +70,12 @@ const descriptionInput = document.querySelector('.popup__input_type_description'
 
 const addButtonElement = document.querySelector('.profile__add-button');
 const popupAddCardElement = document.querySelector('.popup_type_add');
-const popupCardCloseButton = document.querySelector('.popup__close-button_type_card');
 const formAddElement = document.querySelector('.popup__form_type_add');
 
 // выбор элементов полей ввода в попапе для добавления карточек
 
 const cardName = document.querySelector('.popup__input_type_card-name');
 const cardLink = document.querySelector('.popup__input_type_link');
-
-// выбираем кнопку закрытия попапа с увеличенной фото
-
-const bigCardCloseButton = document.querySelector('.popup__close-button_type_bigcard');
 
 // выбор элементов имени и описания профиля на основной странице
 
@@ -92,28 +86,17 @@ const profileDescription = document.querySelector('.profile__description');
 
 function openPopup(e) {
   e.classList.add('popup_opend');
-}
-
-//выберем все инпуты в попапе редактирования профиля
-inputEditElements = Array.from(popupEditElement.querySelectorAll('.popup__input'));
-
-//функция сбрасывающая ошибки валидации при поторном открытии попапа редактирования профиля
-
-const removeErrorMessage = () => {
-  inputEditElements.forEach((popupInput) => {
-    popupInput.classList.remove('popup__input_type_error');
-    const inputMessageError = document.querySelectorAll('.popup__input-error');
-    inputMessageError.forEach((item) => {
-      item.textContent = '';
-    })
-  })
+  //добавляем слушатель события с функцией закрытия попапа по клавише esc
+  document.addEventListener('keydown', closePopupByEsc);
 }
 
 // вешаем обработчик события по клику на кнопки открытия попапов с функцией колбэком
 
 editButtonElement.addEventListener('click', () => {
+
   //убираем текст ошибок при открытии попапа редактирования профиля
-  removeErrorMessage();
+  removeErrorMessage(formEditElement, VALIDATION_CONFIG);
+
   // для попапа редактирования профиля переносим имя и описание в поля ввода
   nameInput.value = profileName.textContent;
   descriptionInput.value = profileDescription.textContent;
@@ -124,6 +107,9 @@ editButtonElement.addEventListener('click', () => {
 const saveButton = popupAddCardElement.querySelector('.popup__save-button');
 
 addButtonElement.addEventListener('click', () => {
+
+  //убираем текст ошибок при открытии попапа добавления карточек
+  removeErrorMessage(formAddElement, VALIDATION_CONFIG);
 
   //сделаем кнопку сохранения неактивной при открытии попапа
   disableButton(saveButton, VALIDATION_CONFIG);
@@ -138,13 +124,20 @@ addButtonElement.addEventListener('click', () => {
 
 function closePopup(e) {
     e.classList.remove('popup_opend');
+    //удаляем слушатель события с функцией закрытия попапа по клавише esc при закрытии попапа
+    document.removeEventListener('keydown', closePopupByEsc);
 }
 
-// вешаем обработчик события по клику на кнопки закрытия попапов с функцией колбэком
+// выберем все кнопки закрытия попапов
 
-popupProfileCloseButton.addEventListener('click', () => closePopup(popupEditElement));
-popupCardCloseButton.addEventListener('click', () => closePopup(popupAddCardElement));
-bigCardCloseButton.addEventListener('click', () => closePopup(bigCardPopup));
+closeButton = document.querySelectorAll('.popup__close-button');
+
+// добавим слушатель события с функцией закрытия попапа каждой кнопке
+
+closeButton.forEach(button => {
+  const buttonsPopup = button.closest('.popup'); // нашли родителя с нужным классом
+  button.addEventListener('click', () => closePopup(buttonsPopup)); // закрыли попап
+});
 
 // функция, присваивающая новые значения имени и описания профиля через popup
 
@@ -196,7 +189,7 @@ const popupList = Array.from(document.querySelectorAll('.popup'));
 
 const closePopupByOverlay = () => {
   popupList.forEach((popupItem) => {
-    popupItem.addEventListener('click', function(evt) {
+    popupItem.addEventListener('mousedown', function(evt) {
       if (evt.target === evt.currentTarget) {
         closePopup(popupItem);
       }
@@ -208,14 +201,9 @@ closePopupByOverlay();
 
 //универсальная функция закрытия всех попапов по клавише esc
 
-const closePopupByEsc = () => {
-  popupList.forEach((formElement) => {
-    document.addEventListener('keydown', function(e) {
-      if (e.keyCode === 27) {
-        closePopup(formElement);
-      }
-    })
-  })
+function closePopupByEsc(evt) {
+  if (evt.key === "Escape") {
+    const openedPopup = document.querySelector('.popup_opend');
+    closePopup(openedPopup);
+  }
 }
-
-closePopupByEsc();
