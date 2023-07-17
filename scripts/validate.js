@@ -79,7 +79,7 @@ function enableButton (buttonElement, config) {
   buttonElement.disabled = false;
 };
 
-//функция сбрасывающая ошибки валидации при поторном открытии попапа редактирования профиля
+//функция сбрасывающая текст и стили ошибки валидации при поторном открытии попапа редактирования профиля и добавления карточек
 
 const removeErrorMessage = (formElement, config) => {
   const inputList = Array.from(formElement.querySelectorAll(config.inputElement));
