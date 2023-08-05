@@ -1,15 +1,10 @@
-// выбираем элементы картинки для реализации всплывающего окна с фото
-
-const bigCardImage = document.querySelector('.popup__image');
-const bigCardTitle = document.querySelector('.popup__card-name');
-const bigCardPopup = document.querySelector('.popup_type_bigcard');
-const bigCardCloseButton = document.querySelector('.popup__close-button');
 
 class Card {
-  constructor(data, templateSelector) {
+  constructor(data, templateSelector, handleOpenPopup) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
+    this._handleOpenPopup = handleOpenPopup;
   }
 
   _getTemplate() {
@@ -24,23 +19,11 @@ class Card {
 
   _handleClickDelete() {
     this._element.remove();
+    this._element = null;
   }
 
   _handleClickLike() {
-    this._element.querySelector('.element__like-button').classList.toggle('element__like-button_active');
-  }
-
-  _handleOpenPopup() {
-    bigCardImage.src = this._link;
-    bigCardImage.alt = this._name;
-    bigCardTitle.textContent = this._name;
-    bigCardPopup.classList.add('popup_opend');
-    document.addEventListener('keydown', this._closePopupByEsc);
-  }
-
-  _handleClosePopup() {
-    bigCardImage.src = '';
-    bigCardPopup.classList.remove('popup_opend');
+    this._likeButton.classList.toggle('element__like-button_active');
   }
 
   _closePopupByEsc(evt) {
@@ -57,18 +40,14 @@ class Card {
       this._handleClickDelete();
     });
 
-    const likeButton = this._element.querySelector('.element__like-button');
-    likeButton.addEventListener('click', () => {
+    this._likeButton = this._element.querySelector('.element__like-button');
+    this._likeButton.addEventListener('click', () => {
       this._handleClickLike();
     });
 
-    const cardImage = this._element.querySelector('.element__image');
-    cardImage.addEventListener('click', () => {
-      this._handleOpenPopup();
-    });
-
-    bigCardCloseButton.addEventListener('click', () => {
-      this._handleClosePopup();
+    this._cardImage = this._element.querySelector('.element__image');
+    this._cardImage.addEventListener('click', () => {
+      this._handleOpenPopup(this._name, this._link);
     });
   }
 
@@ -78,6 +57,7 @@ class Card {
 
     this._element.querySelector('.element__image').src = this._link;
     this._element.querySelector('.element__title').textContent = this._name;
+    this._element.querySelector('.element__title').alt = this._name;
 
     return this._element;
   }
