@@ -97,8 +97,8 @@ _setEventListeners() {
 
 //публичный метод, который найдёт на странице и обработает все формы
 
-enableValidation(currentForm) {
-  this._setEventListeners(currentForm);
+enableValidation() {
+  this._setEventListeners();
 }
 }
 
