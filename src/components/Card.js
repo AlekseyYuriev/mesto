@@ -1,10 +1,10 @@
 
 class Card {
-  constructor(data, templateSelector, handleOpenPopup) {
+  constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
-    this._handleOpenPopup = handleOpenPopup;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -25,13 +25,13 @@ class Card {
   _handleClickLike() {
     this._likeButton.classList.toggle('element__like-button_active');
   }
-
+/*
   _closePopupByEsc(evt) {
     if (evt.key === "Escape") {
       bigCardPopup.classList.remove('popup_opend');
     }
   }
-
+*/
 
   _setEventListeners() {
 
@@ -47,7 +47,7 @@ class Card {
 
     this._cardImage = this._element.querySelector('.element__image');
     this._cardImage.addEventListener('click', () => {
-      this._handleOpenPopup(this._name, this._link);
+      this._handleCardClick(this._name, this._link);
     });
   }
 
