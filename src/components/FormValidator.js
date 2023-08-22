@@ -1,5 +1,5 @@
 
-class FormValidator {
+export default class FormValidator {
   constructor(config, currentForm) {
     this._formElement = config.formElement;
     this._inputElement = config.inputElement;
@@ -101,5 +101,3 @@ enableValidation() {
   this._setEventListeners();
 }
 }
-
-export default FormValidator;

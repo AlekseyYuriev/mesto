@@ -1,4 +1,11 @@
-import Card from '../components/Card.js';
+// Старый код
+
+//export const sectionElement = document.querySelector('.elements');
+//export const popupEditElement = document.querySelector('.popup_type_edit');
+// export const popupAddCardElement = document.querySelector('.popup_type_add');
+// export const profileName = document.querySelector('.profile__name');
+//export const bigCardPopup = document.querySelector('.popup_type_bigcard');
+
 
 // // отдельная функция создания карточки
 // export const createCard = (item) => {
@@ -6,79 +13,124 @@ import Card from '../components/Card.js';
 //   return card.generateCard();
 // };
 
+// // добавляем карточки на страницу с помощью данных из массива
+// initialCards.forEach((item) => {
+//   sectionElement.append(createCard(item));
+// });
 
-/*
-// добавляем карточки на страницу с помощью данных из массива
-initialCards.forEach((item) => {
-  sectionElement.append(createCard(item));
-});
-*/
+// // универсальная функция открытия popup
+// function openPopup(e) {
+//   e.classList.add('popup_opend');
+//   //добавляем слушатель события с функцией закрытия попапа по клавише esc
+//   document.addEventListener('keydown', closePopupByEsc);
+// }
 
-/*
-// универсальная функция открытия popup
-function openPopup(e) {
-  e.classList.add('popup_opend');
-  //добавляем слушатель события с функцией закрытия попапа по клавише esc
-  document.addEventListener('keydown', closePopupByEsc);
-}
+// // вешаем обработчик события по клику на кнопки открытия попапов с функцией колбэком
+// editButtonElement.addEventListener('click', () => {
 
-// вешаем обработчик события по клику на кнопки открытия попапов с функцией колбэком
-editButtonElement.addEventListener('click', () => {
+//   popupEditElementValidate.resetValidation();
 
-  popupEditElementValidate.resetValidation();
+//   // для попапа редактирования профиля переносим имя и описание в поля ввода
+//   nameInput.value = profileName.textContent;
+//   descriptionInput.value = profileDescription.textContent;
+//   openPopup(popupEditElement);
+// });
 
-  // для попапа редактирования профиля переносим имя и описание в поля ввода
-  nameInput.value = profileName.textContent;
-  descriptionInput.value = profileDescription.textContent;
-  openPopup(popupEditElement);
-});
+// addButtonElement.addEventListener('click', () => {
 
-addButtonElement.addEventListener('click', () => {
+//   popupAddCardElementValidated.resetValidation();
 
-  popupAddCardElementValidated.resetValidation();
+//   // для попапа добавления карточек оставляем пустыми поля названия карточки и ссылки
+//   formAddElement.reset();
 
-  // для попапа добавления карточек оставляем пустыми поля названия карточки и ссылки
-  formAddElement.reset();
+//   openPopup(popupAddCardElement);
+// });
 
-  openPopup(popupAddCardElement);
-});
+// // добавим слушатель события с функцией закрытия попапа каждой кнопке
 
-// добавим слушатель события с функцией закрытия попапа каждой кнопке
+// closeButton.forEach(button => {
+// const buttonsPopup = button.closest('.popup'); // нашли родителя с нужным классом
+// button.addEventListener('click', () => closePopup(buttonsPopup)); // закрыли попап
+// });
 
-closeButton.forEach(button => {
-const buttonsPopup = button.closest('.popup'); // нашли родителя с нужным классом
-button.addEventListener('click', () => closePopup(buttonsPopup)); // закрыли попап
-});
+// //универсальная функция закрытия всех попапов по клику на оверлэй
 
-//универсальная функция закрытия всех попапов по клику на оверлэй
+// const closePopupByOverlay = () => {
+//   popupList.forEach((popupItem) => {
+//     popupItem.addEventListener('mousedown', function(evt) {
+//       if (evt.target === evt.currentTarget) {
+//         closePopup(popupItem);
+//       }
+//     });
+//   });
+// }
 
-const closePopupByOverlay = () => {
-  popupList.forEach((popupItem) => {
-    popupItem.addEventListener('mousedown', function(evt) {
-      if (evt.target === evt.currentTarget) {
-        closePopup(popupItem);
-      }
-    });
-  });
-}
+// closePopupByOverlay();
 
-closePopupByOverlay();
+// //универсальная функция закрытия всех попапов по клавише esc
 
-//универсальная функция закрытия всех попапов по клавише esc
+// function closePopupByEsc(evt) {
+//   if (evt.key === "Escape") {
+//     const openedPopup = document.querySelector('.popup_opend');
+//     closePopup(openedPopup);
+//   }
+// }
 
-function closePopupByEsc(evt) {
-  if (evt.key === "Escape") {
-    const openedPopup = document.querySelector('.popup_opend');
-    closePopup(openedPopup);
-  }
-}
+// // функция, отвечающая за открытие попапа с увеличенной картинкой
 
-// функция, отвечающая за открытие попапа с увеличенной картинкой
+// function handleOpenPopup(name, link) {
+//   bigCardImage.src = link;
+//   bigCardImage.alt = name;
+//   bigCardTitle.textContent = name;
+//   openPopup(bigCardPopup);
+// }
 
-function handleOpenPopup(name, link) {
-  bigCardImage.src = link;
-  bigCardImage.alt = name;
-  bigCardTitle.textContent = name;
-  openPopup(bigCardPopup);
-}
-*/
+// // функция закрытия popup
+
+// function closePopup(e) {
+//   e.classList.remove('popup_opend');
+//   //удаляем слушатель события с функцией закрытия попапа по клавише esc при закрытии попапа
+//   //document.removeEventListener('keydown', closePopupByEsc);
+// }
+
+// // функция, присваивающая новые значения имени и описания профиля через popup
+
+// function handleEditFormSubmit() {
+//   // отмена стандартной отправки формы
+//   evt.preventDefault();
+
+//   // Присваиваем значения полей nameInput и descriptionInput из свойства value
+//   // нужным элементам (profileName и profileDescription) с помощью textContent
+
+//   profileName.textContent = nameInput.value;
+//   profileDescription.textContent = descriptionInput.value;
+
+//   // Добавляем функцию закрытия popup
+
+//   closePopup(popupEditElement);
+// }
+
+// Прикрепляем обработчик к форме:
+// он будет следить за событием “submit” - «отправка» для формы редактирования профиля
+//formEditElement.addEventListener('submit', handleEditFormSubmit);
+
+// Функция добавления новых карточек на страницу
+
+// const handleAddFormSubmit = (e) => {
+//   // отмена стандартной отправки формы
+//   e.preventDefault();
+
+//   // сохраняем в константы данные, которые передаём из полей ввода в фукцию рендеринга карточек
+//   const name = cardName.value;
+//   const link = cardLink.value;
+
+//   // вызываем функцию создания карточки и добавляем в начало списка на странице
+//   sectionElement.prepend(createCard({name, link}));
+
+//   // добавляем функцию закрытия попапа после добавления новой карточки
+//   closePopup(popupAddCardElement);
+// }
+
+// // Прикрепляем обработчик к форме:
+// // он будет следить за событием “submit” - «отправка» для формы создания карточек
+// formAddElement.addEventListener('submit', handleAddFormSubmit);
