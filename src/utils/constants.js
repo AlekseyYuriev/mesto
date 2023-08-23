@@ -39,38 +39,11 @@ export const VALIDATION_CONFIG = {
 // выбираем секцию для добавления карточек
 export const sectionElement = '.elements';
 
-// выбор элементов, которые взаимодействуют с popup и формой
-export const editButtonElement = document.querySelector('.profile__edit-button');
+// выбираем селекторы попапов для передачи в конструкторы классов
 export const popupEditElement = '.popup_type_edit';
-
-export const formEditElement = document.querySelector('.popup__form_type_edit')
-export const formEditSelector = '.popup_type_edit';
-
-export const nameInput = document.querySelector('.popup__input_type_name');
-export const descriptionInput = document.querySelector('.popup__input_type_description');
-
-export const addButtonElement = document.querySelector('.profile__add-button');
 export const popupAddCardElement = '.popup_type_add';
-
-export const formAddElement = document.querySelector('.popup__form_type_add');
-
-// выбор элементов полей ввода в попапе для добавления карточек
-export const cardName = document.querySelector('.popup__input_type_card-name');
-export const cardLink = document.querySelector('.popup__input_type_link');
+export const bigCardPopup = '.popup_type_bigcard';
 
 // выбор элементов имени и описания профиля на основной странице
 export const profileName = '.profile__name';
-
-// export const profileDescription = document.querySelector('.profile__description');
 export const profileDescription = '.profile__description';
-
-// выбираем элементы картинки для реализации всплывающего окна с фото
-export const bigCardImage = document.querySelector('.popup__image');
-export const bigCardTitle = document.querySelector('.popup__card-name');
-export const bigCardPopup = '.popup_type_bigcard';
-
-// выберем все кнопки закрытия попапов
-export const closeButton = document.querySelectorAll('.popup__close-button');
-
-//выберем все попапы на странице и сразу представим их в виде массива
-export const popupList = Array.from(document.querySelectorAll('.popup'));

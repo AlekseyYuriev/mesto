@@ -5,13 +5,21 @@
 // export const popupAddCardElement = document.querySelector('.popup_type_add');
 // export const profileName = document.querySelector('.profile__name');
 //export const bigCardPopup = document.querySelector('.popup_type_bigcard');
+// const nameInput = document.querySelector('.popup__input_type_name');
+// const descriptionInput = document.querySelector('.popup__input_type_description');
 
+// // выбор элементов полей ввода в попапе для добавления карточек
+// const cardName = document.querySelector('.popup__input_type_card-name');
+// const cardLink = document.querySelector('.popup__input_type_link');
 
-// // отдельная функция создания карточки
-// export const createCard = (item) => {
-//   const card = new Card(item, '.card-template', handleCardClick);
-//   return card.generateCard();
-// };
+// // выбираем элементы картинки для реализации всплывающего окна с фото
+// const bigCardImage = document.querySelector('.popup__image');
+// const bigCardTitle = document.querySelector('.popup__card-name');
+// // выберем все кнопки закрытия попапов
+// const closeButton = document.querySelectorAll('.popup__close-button');
+
+// //выберем все попапы на странице и сразу представим их в виде массива
+// const popupList = Array.from(document.querySelectorAll('.popup'));
 
 // // добавляем карточки на страницу с помощью данных из массива
 // initialCards.forEach((item) => {

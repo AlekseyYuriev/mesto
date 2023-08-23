@@ -2,10 +2,6 @@
 import {
   initialCards,
   bigCardPopup,
-  editButtonElement,
-  addButtonElement,
-  formEditElement,
-  formAddElement,
   sectionElement,
   VALIDATION_CONFIG,
   popupAddCardElement,
@@ -23,22 +19,32 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import FormValidator from '../components/FormValidator.js';
 import UserInfo from '../components/UserInfo.js';
 
+// выбор элементов, которые взаимодействуют с popup и формой
+const editButtonElement = document.querySelector('.profile__edit-button');
+const formEditElement = document.querySelector('.popup__form_type_edit')
+
+const addButtonElement = document.querySelector('.profile__add-button');
+const formAddElement = document.querySelector('.popup__form_type_add');
 
 const userInfo = new UserInfo({profileName, profileDescription});
 
 const cardList = new Section({
   items: initialCards,
   renderer: (cardItem) => {
-    const card = new Card(cardItem, '.card-template', handleCardClick);
-    const cardElement = card.generateCard();
-
+    const cardElement = createCard(cardItem);
     cardList.addItem(cardElement);
   },
 },
 sectionElement
 );
 
-cardList.renderItems();
+cardList.renderItems(initialCards);
+
+// отдельная функция создания карточки
+function createCard (item) {
+  const card = new Card(item, '.card-template', handleCardClick);
+  return card.generateCard();
+};
 
 const bigPopup = new PopupWithImage(bigCardPopup);
 bigPopup.setEventListeners();
@@ -49,6 +55,7 @@ function handleCardClick(name, link) {
 
 const editPopup = new PopupWithForm(popupEditElement, (formData) => {
   userInfo.setUserInfo(formData);
+  editPopup.close();
 })
 
 editButtonElement.addEventListener('click', () => {
@@ -59,10 +66,9 @@ editButtonElement.addEventListener('click', () => {
 editPopup.setEventListeners();
 
 const addCardPopup = new PopupWithForm(popupAddCardElement, (formData) => {
-  const card = new Card(formData, '.card-template', handleCardClick);
-  const cardElement = card.generateCard();
-
+  const cardElement = createCard(formData);
   cardList.addItem(cardElement);
+  addCardPopup.close();
 })
 
 addCardPopup.setEventListeners();
