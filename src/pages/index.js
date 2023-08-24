@@ -26,6 +26,9 @@ const formEditElement = document.querySelector('.popup__form_type_edit')
 const addButtonElement = document.querySelector('.profile__add-button');
 const formAddElement = document.querySelector('.popup__form_type_add');
 
+const profileNameInputElement = document.querySelector('.popup__input_type_name');
+const profileDescriptionInputElement = document.querySelector('.popup__input_type_description');
+
 const userInfo = new UserInfo({profileName, profileDescription});
 
 const cardList = new Section({
@@ -60,6 +63,11 @@ const editPopup = new PopupWithForm(popupEditElement, (formData) => {
 
 editButtonElement.addEventListener('click', () => {
   popupEditElementValidate.resetValidation();
+
+  const currentUserInfo = userInfo.getUserInfo();
+  profileNameInputElement.value = currentUserInfo.userName;
+  profileDescriptionInputElement.value = currentUserInfo.userDescription;
+
   editPopup.open();
 })
 
