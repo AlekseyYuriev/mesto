@@ -142,3 +142,43 @@
 // // Прикрепляем обработчик к форме:
 // // он будет следить за событием “submit” - «отправка» для формы создания карточек
 // formAddElement.addEventListener('submit', handleAddFormSubmit);
+
+// создаём исходный массив с данными для карточек
+// export const initialCards = [
+//   {
+//     name: 'Архыз',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+//   },
+//   {
+//     name: 'Челябинская область',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+//   },
+//   {
+//     name: 'Иваново',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+//   },
+//   {
+//     name: 'Камчатка',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+//   },
+//   {
+//     name: 'Холмогорский район',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+//   },
+//   {
+//     name: 'Байкал',
+//     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+//   }
+// ];
+
+
+// const addCardPopup = new PopupWithForm(popupAddCardElement, (formData) => {
+//   const cardElement = createCard(formData);
+//   cardList.addItem(cardElement);
+//   addCardPopup.close();
+// })
+
+//функция, вызывающая публичный метод для открытия увеличенной картинки
+// function handleCardClick(name, link) {
+//   bigPopup.open(name, link);
+// }

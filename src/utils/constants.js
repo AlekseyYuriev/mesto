@@ -1,30 +1,3 @@
-// создаём исходный массив с данными для карточек
-export const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 //настройки для вызова валидации
 export const VALIDATION_CONFIG = {
@@ -43,7 +16,10 @@ export const sectionElement = '.elements';
 export const popupEditElement = '.popup_type_edit';
 export const popupAddCardElement = '.popup_type_add';
 export const bigCardPopup = '.popup_type_bigcard';
+export const popupDeleteElement = '.popup_type_confirm';
+export const popupUpdateAvatar = '.popup_type_avatar';
 
 // выбор элементов имени и описания профиля на основной странице
 export const profileName = '.profile__name';
 export const profileDescription = '.profile__description';
+export const profileAvatar = '.profile__avatar';
