@@ -118,9 +118,6 @@ Promise.all([api.getUserData(), api.getInitialCards()])
     userInfo.setUserAvatar(userData);
 
     cardList.renderItems(initialCards);
-    initialCards.forEach((item) => {
-      createCard(item);
-    })
   })
   .catch((err) => {
     console.log(err);

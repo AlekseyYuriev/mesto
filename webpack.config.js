@@ -16,6 +16,7 @@ module.exports = {
     static: {
       directory: path.join(__dirname, 'dist'),
     },
+    open: ['http://localhost:8080/'],
   },
   mode: 'development',
   module: {
